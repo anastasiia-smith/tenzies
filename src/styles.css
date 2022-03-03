@@ -57,23 +57,96 @@ body {
   grid-template-rows: repeat(2, 1fr);
   gap: 18px;
   margin: 25px 0;
+  align-items: center;
+  justify-items: center;
 }
+
+/* Dice start*/
 
 .game__item {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
   background: #FFFFFF;
   cursor: pointer;
-  padding: 8px 10px;
-}
-
-.game__num {
-  font-weight: bold;
-  color: #2B283A;
-  font-size: 1.2868rem;
-  margin: 0;
+  padding: 4px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas:
+    "lt t rt"
+    "lm m rm" 
+    "lb b rb";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .game__item.isHeld {
   background: #59E391;
 }
+
+.dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color:#000;
+}
+
+.game__item-1 > .dot-1 { grid-area: m; }
+
+.game__item-2 > .dot-1, 
+.game__item-4 > .dot-1,
+.game__item-5 > .dot-1,
+.game__item-6 > .dot-1 { grid-area: lt; }
+
+.game__item-2 > .dot-2,
+.game__item-4 > .dot-4,
+.game__item-5 > .dot-5,
+.game__item-6 > .dot-6  { grid-area: rb; }
+
+.game__item-3 > .dot-1,
+.game__item-5 > .dot-4,
+.game__item-4 > .dot-3,
+.game__item-6 > .dot-5 {grid-area: lb;} 
+
+.game__item-3 > .dot-2,
+.game__item-5 > .dot-3 {grid-area: m;}
+
+.game__item-3 > .dot-3,
+.game__item-4 > .dot-2,
+.game__item-5 > .dot-2,
+.game__item-6 > .dot-2 {grid-area: rt;}
+
+.game__item-6 > .dot-3 {grid-area: lm;}
+
+.game__item-6 > .dot-4 {grid-area: rm;}
+
+
+/* 
+.game__item-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game__item-2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game__item-2 .dot-2 {
+  align-self: flex-end;
+}
+
+.game__item-3 {
+  display: grid;
+  grid-template: 3fr 3fr;
+}
+
+.game__item-3 .dot-3 {
+  align-self: flex-end;
+} */
+
+/* Dice end*/
