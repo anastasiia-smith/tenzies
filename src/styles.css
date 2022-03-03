@@ -12,7 +12,7 @@ body {
 
 .game {
   width: 286px;
-  height: 286px;
+  height: 300px;
   padding: 34px;
   text-align: center;
   background: #F5F5F5;
@@ -24,7 +24,8 @@ body {
   margin: 0 0 10px 0;
 }
 
-.game__rolls {
+.game__stats {
+  color: #4A4E74;
   font-size: 0.7rem;
 }
 

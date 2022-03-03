@@ -7,12 +7,37 @@ export default function App() {
   const [dice, setDice] = useState(allNewDice())
   const [won, setWon] = useState(false)
   const [numOfRolls, setNumOfRolls] = useState(0)
+  const [timer, setTimer] = useState(0)
+  const [isOn, setIsOn] = useState(true)
+
+  // function startTimer() {
+  //   return {
+  //     seconds: 0,
+  //     minutes: "00",
+  //     isOn: true
+  //   }
+  // }
+
+  useEffect(() => {
+    let interval = null;
+    console.log(isOn)
+    if(isOn) {
+      interval = setInterval(() => {
+        setTimer(prevTime => prevTime += 1)
+      }, 1000)
+    } else {
+      clearInterval(interval)
+    }
+
+    return () => clearInterval(interval)
+  }, [isOn])
 
   useEffect(() => {
     const firstDie = dice[0].value;
     const diceState = dice.every(element => element.isHeld === true && element.value === firstDie)
     //all dice picked && all dice ids same 
     if(diceState){
+      setIsOn(false)
       setWon(prevWon => !prevWon)
     }
   }, [dice])
@@ -66,6 +91,8 @@ export default function App() {
       setWon(false)
       setDice(allNewDice())
       setNumOfRolls(0)
+      setTimer(0)
+      setIsOn(true)
     }
   }
   return(
@@ -73,11 +100,12 @@ export default function App() {
       {won && <Confetti />}
       <h1 className="game__header">Tenzies</h1>
       <p className="game__description">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+      <h3 className="game__stats">{timer} s</h3>
       <div className="game__die">
         {die}
       </div>
       <button onClick={rollNewDice} className="game__buton">{won ? "New Game" : "Roll"}</button>     
-      <h3 className="game__rolls">Number of rolls: {numOfRolls}</h3>
+      <h3 className="game__stats">Number of rolls: {numOfRolls}</h3>
     </main>
   )
 } 
