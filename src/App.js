@@ -65,7 +65,7 @@ export default function App() {
     } else {
       setWon(false)
       setDice(allNewDice())
-      setNumOfRolls(1)
+      setNumOfRolls(0)
     }
   }
   return(
