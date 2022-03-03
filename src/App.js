@@ -6,6 +6,7 @@ import Confetti from 'react-confetti'
 export default function App() {
   const [dice, setDice] = useState(allNewDice())
   const [won, setWon] = useState(false)
+  const [numOfRolls, setNumOfRolls] = useState(0)
 
   useEffect(() => {
     const firstDie = dice[0].value;
@@ -60,9 +61,11 @@ export default function App() {
         }
         return newDice
       })
+      setNumOfRolls(prevNumOfRolls => prevNumOfRolls += 1)
     } else {
       setWon(false)
       setDice(allNewDice())
+      setNumOfRolls(1)
     }
   }
   return(
@@ -74,6 +77,7 @@ export default function App() {
         {die}
       </div>
       <button onClick={rollNewDice} className="game__buton">{won ? "New Game" : "Roll"}</button>     
+      <h3 className="game__rolls">Number of rolls: {numOfRolls}</h3>
     </main>
   )
 } 
