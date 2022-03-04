@@ -10,25 +10,16 @@ export default function App() {
   const [timer, setTimer] = useState(0)
   const [isOn, setIsOn] = useState(true)
 
-  // function startTimer() {
-  //   return {
-  //     seconds: 0,
-  //     minutes: "00",
-  //     isOn: true
-  //   }
-  // }
-
   useEffect(() => {
     let interval = null;
     console.log(isOn)
     if(isOn) {
       interval = setInterval(() => {
-        setTimer(prevTime => prevTime += 1)
+        setTimer(prevTime => prevTime + 1)
       }, 1000)
     } else {
       clearInterval(interval)
     }
-
     return () => clearInterval(interval)
   }, [isOn])
 
@@ -100,7 +91,11 @@ export default function App() {
       {won && <Confetti />}
       <h1 className="game__header">Tenzies</h1>
       <p className="game__description">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-      <h3 className="game__stats">{timer} s</h3>
+      
+      <h3 className="game__stats">
+        <span>{("0" + Math.floor((timer / 60) % 60)).slice(-2)}:</span>
+        <span>{("0" + Math.floor((timer) % 60)).slice(-2)}</span>
+      </h3>
       <div className="game__die">
         {die}
       </div>
