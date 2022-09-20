@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/anastasiia-smith.github.io/tenzies/static/css/main.611b78da.css",
+    "main.js": "/anastasiia-smith.github.io/tenzies/static/js/main.949a9f12.js",
+    "index.html": "/anastasiia-smith.github.io/tenzies/index.html",
+    "main.611b78da.css.map": "/anastasiia-smith.github.io/tenzies/static/css/main.611b78da.css.map",
+    "main.949a9f12.js.map": "/anastasiia-smith.github.io/tenzies/static/js/main.949a9f12.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.611b78da.css",
+    "static/js/main.949a9f12.js"
+  ]
+}
