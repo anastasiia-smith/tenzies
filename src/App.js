@@ -12,7 +12,6 @@ export default function App() {
 
   useEffect(() => {
     let interval = null;
-    console.log(isOn)
     if(isOn) {
       interval = setInterval(() => {
         setTimer(prevTime => prevTime + 1)
