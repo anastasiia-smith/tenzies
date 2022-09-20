@@ -26,7 +26,6 @@ export default function App() {
   useEffect(() => {
     const firstDie = dice[0].value;
     const diceState = dice.every(element => element.isHeld === true && element.value === firstDie)
-    //all dice picked && all dice ids same 
     if(diceState){
       setIsOn(false)
       setWon(prevWon => !prevWon)
